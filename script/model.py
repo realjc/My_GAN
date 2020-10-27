@@ -85,3 +85,37 @@ class DiscriminatorFunieGAN(nn.Module)
     def forward(self, img_A, img_B):
         img_input = torch.cat((img_A, img_B), 1)
         return self.model(img_input)
+
+
+def Weights_Normal(m):
+    classname = m.__class__.__name__
+    if classname.find("Conv") != -1:
+        nn.init.normal_(m.weight.data, 0.0, 0.02)
+    elif classname.find("BatchNorm2d") != -1:
+        nn.init.normal_(m.weight.data, 1.0, 0.02)
+        nn.init.constant_(m.bias.data, 0.0)
+
+class VGG19_PercepLoss(nn.Module):
+    def __init__(self, _pertrained_=True):
+        super(VGG19_PercepLoss,self).__init__()
+        self.vgg = models.vgg19(pertrained=_pertrained_).features
+        for param in self.vgg.parameters():
+            param.requires_grad_(False)
+    
+    def get_features(self, image, layers=None):
+        if layers is None:
+            layers = {'30':'conv5_2'}
+        features = {}
+        x = image
+        for name,layers in self.vgg._modules.items():
+            x = layers(x)
+            if name in layers:
+                features[layers[name]] = x 
+        return features
+
+    def forward(self, pred, true, layer='conv5_2'):
+        true_f = self.get_features(true)
+        pred_f = self.get_features(pred)
+        return torch.mean((true_f[layer]-pred_f[layer])**2)
+        
+    
