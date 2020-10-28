@@ -1,4 +1,4 @@
-from model import GenNN, DisNN
+from model import GenNN, DisNN,GANTrainer
 import torch
 
 
@@ -32,4 +32,5 @@ def print_DisNN_param():
 
 if __name__=="__main__":
     ## print_DisNN_param()
-    test_DisNN()
+    gan_trainer = GANTrainer()
+    gan_trainer.train()

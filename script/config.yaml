@@ -1,0 +1,10 @@
+data_size: 1000
+img_width: 256
+img_height: 256
+
+lr_rate: 0.0003
+lr_b1 : 0.5
+lr_b2 : 0.99
+
+max_epoch : 50
+batch_size : 8
