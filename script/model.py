@@ -32,7 +32,7 @@ class UNetUp(nn.Module):
 
 class GenNN(nn.Module):
     def __init__(self, in_channels=3, out_channels=3):
-        super(GeneratorFunieGAN, self).__init__()
+        super(GenNN, self).__init__()
         # encoding layers
         self.down1 = UNetDown(in_channels, 32, bn=False)
         self.down2 = UNetDown(32, 128)
