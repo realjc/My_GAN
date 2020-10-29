@@ -1,0 +1,13 @@
+data_size: 1000
+size: 128
+
+input_nc: 3
+output_nc: 3
+
+lr: 0.0002
+
+n_epochs : 200
+epoch: 0
+decay_epoch: 100
+
+batchSize : 8

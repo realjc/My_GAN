@@ -5,7 +5,7 @@ img_height: 256
 lr_rate: 0.0001
 
 num_critic: 5
-num_epoches : 50
+num_epochs : 50
 batch_size : 8
 lambda_1 : 100
 lambda_2 : 1

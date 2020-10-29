@@ -219,7 +219,7 @@ class UGANTrainer:
         L_gdl = Gradient_Difference_Loss().cuda()
         Tensor = torch.cuda.FloatTensor
 
-        for epoch in range(self.cfg["num_epoches"]):
+        for epoch in range(self.cfg["num_epochs"]):
             for i, batch in enumerate(self.dataloader):
                 # Model inputs
                 imgs_distorted = Variable(batch["A"].type(Tensor))
@@ -253,7 +253,7 @@ class UGANTrainer:
                 if not i%50:
                     print("\r[Epoch %d/%d: batch %d/%d] [DLoss: %.3f, GLoss: %.3f]"
                                     %(
-                                        epoch, self.cfg["num_epoches"], i, len(self.dataloader),
+                                        epoch, self.cfg["num_epochs"], i, len(self.dataloader),
                                         loss_D.item(), loss_G.item(),
                                     )
                     )
