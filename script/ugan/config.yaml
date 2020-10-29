@@ -1,0 +1,12 @@
+data_size: 1000
+img_width: 256
+img_height: 256
+
+lr_rate: 0.0001
+
+num_critic: 5
+num_epoches : 50
+batch_size : 8
+lambda_1 : 100
+lambda_2 : 1
+lambda_gp : 10
